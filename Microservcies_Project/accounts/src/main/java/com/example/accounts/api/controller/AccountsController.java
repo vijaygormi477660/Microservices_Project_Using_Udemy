@@ -28,4 +28,11 @@ public class AccountsController {
                     .body(new ResponseDto(AccountContants.STATUS_201,AccountContants.MESSAGE_201));
     }
 
+    @GetMapping("/fetch")
+    public ResponseEntity<CustomerDto> fatchAccountDetails(@RequestParam String mobileNumber){
+
+        CustomerDto customerDto = iAccountService.fetchAccount(mobileNumber);
+        return ResponseEntity.status(HttpStatus.OK).body(customerDto);
+    }
+
 }
